@@ -1,12 +1,11 @@
 import './App.css'
+import Poster from './components/poster'
 
 function App() {
 
   return (
     <>
-      <div className='exemplo'>
-
-      </div>
+      <Poster texto="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at odio ante." imagem="/public/blur_edges_3.png" />
     </>
   )
 }
