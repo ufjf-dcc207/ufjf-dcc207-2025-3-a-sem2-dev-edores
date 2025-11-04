@@ -9,10 +9,10 @@ function App() {
 
   return (
     <>
-      <Navbar link_logo={Logo}/>
-      <Poster texto="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at odio ante." imagem="/public/blur_edges_3.png" />
-      <Footer/>    
-      </>
+      <Navbar link_logo={Logo} />
+      <Poster texto={"Lorem ipsum dolor sit amet, consectetur elit.\nQuisque ullamcorper nec sit amet aliquet.\nProin fermentum elit eu mollis maximus."} imagem="/public/blur_edges_3.png" />
+      <Footer />
+    </>
   )
 }
 
