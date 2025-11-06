@@ -1,0 +1,37 @@
+.capa {
+    width: 160px;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+}
+
+.cartaz {
+    width: 160px;
+    border-radius: 4px 4px 0 0;
+    height: auto;
+}
+
+.capa p {
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    margin: 3px 0;
+}
+
+.estrelas {
+    margin-top: -4px;
+}
+
+.cinema-mae {
+    display: flex;
+    margin-bottom: -33px;
+    justify-content: right;
+}
+
+.cinema {
+    position: relative;
+    width: 33px;
+    padding: 6px;
+    background-color: yellow;
+    border-radius: 0 4px 0 4px;
+}
