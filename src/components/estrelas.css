@@ -1,0 +1,12 @@
+.estrela {
+    color: gold;
+}
+
+.estrelas-mae {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333333;
+    border-radius: 4px;
+
+}

@@ -1,9 +1,9 @@
-.botao{
+.botao {
     color: white;
     padding: 15px 32px;
     text-align: center;
-    font-size: 32px;    
-    text-decoration: none;                                                  
+    font-size: 28px;
+    text-decoration: none;
 }
 
 .botao:hover {

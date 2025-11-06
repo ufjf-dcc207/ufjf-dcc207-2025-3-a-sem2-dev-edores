@@ -1,4 +1,10 @@
 body {
-  background: linear-gradient(to top right, #0C0D12 0%, #1917E3 100%);
+  background: linear-gradient(33deg, rgba(17, 17, 48, 1) 0%, rgba(56, 47, 105, 1) 100%);
   overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
