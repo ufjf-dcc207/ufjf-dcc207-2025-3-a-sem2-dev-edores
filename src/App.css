@@ -9,3 +9,49 @@ body {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+.poster-interativo {
+  cursor: pointer;
+}
+
+.modal-sobrepor {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal-caixa {
+  background: #1f1f2f;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 360px;
+  width: 90%;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-imagem {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.modal-fechar {
+  align-self: flex-end;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-titulo {
+  font-size: 18px;
+}

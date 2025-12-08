@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import Poster from './components/poster'
 import Navbar from './components/navbar'
@@ -42,21 +43,63 @@ const Matrizes: MatrizesTupleType[] = [
   ["Em alta", listaDeFilmes3],
 ];
 
+type Filme = {
+  nome: string;
+  imagem: string;
+  nota: number;
+  cinema: boolean;
+};
+
+const tupleParaFilme = ([nome, imagem, nota, cinema]: FilmeTupleType): Filme => ({
+  nome,
+  imagem,
+  nota,
+  cinema
+});
+
 function App() {
+  const [modalAberto, setModalAberto] = useState(false);
+  const [filmeSelecionado, setFilmeSelecionado] = useState<Filme | null>(null);
+
+  const abrirModal = (filme: Filme) => {
+    setFilmeSelecionado(filme);
+    setModalAberto(true);
+  };
+
+  const abrirModalComHero = () => {
+    const filmeHero = tupleParaFilme(listaDeFilmes1[0]);
+    abrirModal(filmeHero);
+  };
+
+  const fecharModal = () => {
+    setModalAberto(false);
+    setFilmeSelecionado(null);
+  };
 
   return (
     <>
       <Navbar link_logo={Logo} link_nav={Matrizes.map(([titulo]) => titulo)} />
-      <Poster texto={"Acompanhe os filmes que você assistiu,\n salve aqueles que você quer ver \n e diga aos seus amigos o que é bom."} imagem="/public/blur_edges_3.png" />
+      <div className='poster-interativo' onClick={abrirModalComHero}>
+        <Poster texto={"Acompanhe os filmes que você assistiu,\n salve aqueles que você quer ver \n e diga aos seus amigos o que é bom."} imagem="/public/blur_edges_3.png" />
+      </div>
       {Matrizes.map(([titulo, filmes, subtitulo]) => (
         <Matriz key={titulo} titulo={titulo} subtitulo={subtitulo} filmes={filmes.map(([nome, imagem, nota, cinema]) => ({
           nome,
           imagem,
           nota,
           cinema
-        }))} />
+        }))} onFilmeClick={abrirModal} />
       ))}
       <Footer />
+      {modalAberto && filmeSelecionado && (
+        <div className='modal-sobrepor' onClick={fecharModal}>
+          <div className='modal-caixa' onClick={(event) => event.stopPropagation()}>
+            <button className='modal-fechar' type='button' onClick={fecharModal}>Fechar</button>
+            <img className='modal-imagem' src={filmeSelecionado.imagem} alt={filmeSelecionado.nome} />
+            <strong className='modal-titulo'>{filmeSelecionado.nome}</strong>
+          </div>
+        </div>
+      )}
     </>
   )
 }
