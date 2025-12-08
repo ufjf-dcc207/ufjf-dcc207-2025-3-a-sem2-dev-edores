@@ -14,7 +14,7 @@ const listaDeFilmes1: FilmeTupleType[] = [
   ["O poderoso Chefão", "https://image.tmdb.org/t/p/original/d6LbJZO8ruvXgOjjGRgjtdYpJS4.jpg", 4, false],
   ["Pulp Fiction", "https://image.tmdb.org/t/p/original/lmenG02ILZN904Tc4XFc5WfJFbd.jpg", 4, false],
   ["A Bruxa", "https://image.tmdb.org/t/p/original/x8WMBRSiyzh9kx7dTUbOUyyeznX.jpg", 4, true],
-  ["Before Sunrise", "https://image.tmdb.org/t/p/original/5NdQMVesitx4IlBEmFok5PxTYOx.jpg", 5, false],
+  ["Before Sunrise", "https://image.tmdb.org/t/p/original/5NdQMVesitx4IlBEmFok5PxTYOx.jpg", 5, true],
   ["O Iluminado", "https://image.tmdb.org/t/p/original/p88OIQzLGFWFIuel5eZWlrADel7.jpg", 5, true],
 ];
 
