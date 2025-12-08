@@ -1,5 +1,6 @@
 import Capa from "./capa";
 import './matriz.css';
+
 interface FilmeProps {
     nome: string;
     imagem: string;
@@ -11,9 +12,10 @@ interface MatrizProps {
     filmes: FilmeProps[];
     titulo: string;
     subtitulo?: string;
+    onFilmeClick: (filme: FilmeProps) => void;
 }
 
-function Matriz({ filmes, titulo, subtitulo }: MatrizProps) {
+function Matriz({ filmes, titulo, subtitulo, onFilmeClick }: MatrizProps) {
     return (
         <div className="matriz-mae" id={titulo}>
             <div className="titulo-matriz">
@@ -28,11 +30,11 @@ function Matriz({ filmes, titulo, subtitulo }: MatrizProps) {
                         imagem={filme.imagem}
                         nota={filme.nota}
                         cinema={filme.cinema}
+                        onClick={() => onFilmeClick(filme)} 
                     />
                 ))}
             </div >
         </div>
-
     )
 }
 
