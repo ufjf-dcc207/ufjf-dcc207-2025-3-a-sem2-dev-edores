@@ -6,6 +6,7 @@ type Filme = {
     imagem: string;
     nota: number;
     cinema: boolean;
+    sinopse: string;
 };
 
 
@@ -18,15 +19,17 @@ interface ModalProps {
 
 export default function Modal({ filme, onClose, isFavorito, onToggleFavorito }: ModalProps) {
     return (
-        <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" onClick={(event) => event.stopPropagation()}>
-                <button className="modal-close" type="button" onClick={onClose}>Fechar</button>
-                <img className="modal-image" src={filme.imagem} alt={filme.nome} />
-                <h2 className="modal-title">{filme.nome}</h2>
+        <div className="modal-sobreposicao" onClick={onClose}>
+            <div className="modal-caixa" onClick={(event) => event.stopPropagation()}>
+                <button className="modal-fechar" type="button" onClick={onClose}>Fechar</button>
+                <img className="modal-imagem" src={filme.imagem} alt={filme.nome} />
+                <h2 className="modal-titulo">{filme.nome}</h2>
                 
-                <div className="modal-rating">
+                <div className="modal-avaliacao">
                     <Estrelas quantidade={filme.nota} />
                 </div>
+
+                <p className="modal-sinopse">{filme.sinopse}</p>
 
                 <button onClick={onToggleFavorito} id='buttonFav' style={{backgroundColor: isFavorito ? '#7c3a31ff' : '#2c3e50',}}>
                     {isFavorito ? "💔 Remover dos Favoritos" : "❤️ Adicionar aos Favoritos"}
