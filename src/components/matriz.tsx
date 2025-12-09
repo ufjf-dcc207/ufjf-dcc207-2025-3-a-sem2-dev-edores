@@ -6,6 +6,7 @@ interface FilmeProps {
     imagem: string;
     nota: number;
     cinema: boolean;
+    sinopse: string;
 }
 
 interface MatrizProps {

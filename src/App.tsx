@@ -45,18 +45,41 @@ const MatrizesFixas: MatrizesTupleType[] = [
 
 const TodosOsFilmes = [...listaDeFilmes1, ...listaDeFilmes2, ...listaDeFilmes3];
 
+const sinopsesPorTitulo: Record<string, string> = {
+  "Vivre Sa Vie": "Nana busca independencia em Paris e sente o peso de cada escolha.",
+  "O poderoso Chefão": "Michael assume os negócios da familia Corleone e paga o preço do poder.",
+  "Pulp Fiction": "Criminosos de Los Angeles se cruzam em encontros violentos e ironicos.",
+  "A Bruxa": "Familia puritana enfrenta medo e supersticao na Nova Inglaterra isolada.",
+  "Before Sunrise": "Dois jovens vagam por Viena e compartilham sonhos ate o amanhecer.",
+  "O Iluminado": "Jack guarda um hotel vazio e sucumbe a visoes que o levam a loucura.",
+  "Psicose": "Marion encontra um dono de motel enigmático e segredos mortais.",
+  "Parasita": "A familia Kim ocupa a casa dos Park e escancara desigualdades profundas.",
+  "Laranja Mecanica": "Alex lidera atos ultraviolentos ate sofrer um experimento de controle.",
+  "La Chinoise": "Estudantes parisienses transformam um apartamento em laboratorio revolucionario.",
+  "Fallen Angels": "Noites de Hong Kong conectam solitarios em busca de afeto e fuga.",
+  "A Viagem de Chiriro": "Chihiro enfrenta espiritos para salvar os pais presos em um banho termal.",
+  "Suspiria": "Bailarina descobre uma irmandade sombria por trás de sua escola de danca.",
+  "Interestelar": "Exploradores cruzam um buraco de minhoca tentando salvar a humanidade.",
+  "Batman": "Bruce Wayne vigia Gotham mascarado enquanto encara criminosos incansaveis.",
+  "Star Wars": "Luke se une a Rebelião para enfrentar o Imperio opressor na galaxia.",
+  "Black Swan": "Nina disputa papel e mergulha em paranoia durante montagem de ballet.",
+  "O agente Secreto": "Infiltrado tenta impedir ataque em Londres sem revelar identidade real."
+};
+
 type Filme = {
   nome: string;
   imagem: string;
   nota: number;
   cinema: boolean;
+  sinopse: string;
 };
 
 const tupleParaFilme = ([nome, imagem, nota, cinema]: FilmeTupleType): Filme => ({
   nome,
   imagem,
   nota,
-  cinema
+  cinema,
+  sinopse: sinopsesPorTitulo[nome] ?? 'Sinopse indisponivel.'
 });
 
 function App() {

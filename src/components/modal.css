@@ -1,4 +1,4 @@
-.modal-overlay {
+.modal-sobreposicao {
 	position: fixed;
 	inset: 0;
 	display: flex;
@@ -9,7 +9,7 @@
 	z-index: 1000;
 }
 
-.modal-content {
+.modal-caixa {
 	background: #202032;
 	color: #ffffff;
 	padding: 20px;
@@ -22,7 +22,7 @@
 	text-align: center;
 }
 
-.modal-close {
+.modal-fechar {
 	align-self: flex-end;
 	background: transparent;
 	border: 1px solid rgba(255, 255, 255, 0.6);
@@ -32,19 +32,25 @@
 	cursor: pointer;
 }
 
-.modal-image {
+.modal-imagem {
 	width: 100%;
 	border-radius: 8px;
 }
 
-.modal-title {
+.modal-titulo {
 	font-size: 1.1rem;
 }
 
-.modal-rating {
+.modal-avaliacao {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.modal-sinopse {
+	font-size: 0.95rem;
+	line-height: 1.4;
+	color: rgba(255, 255, 255, 0.85);
 }
 
 #buttonFav{
