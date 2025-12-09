@@ -17,10 +17,16 @@ interface MatrizProps {
 }
 
 function Matriz({ filmes, titulo, subtitulo, onFilmeClick }: MatrizProps) {
+    let tituloComEstado = titulo;
+
+    if (titulo === "Minha Lista" && filmes.length >= 5) {
+        tituloComEstado = `${titulo} - cheio`;
+    }
+
     return (
         <div className="matriz-mae" id={titulo}>
             <div className="titulo-matriz">
-                <h1>{titulo}</h1>
+                <h1>{tituloComEstado}</h1>
                 {subtitulo && <h2>{subtitulo}</h2>}
             </div>
             <div className="matriz">
@@ -31,7 +37,7 @@ function Matriz({ filmes, titulo, subtitulo, onFilmeClick }: MatrizProps) {
                         imagem={filme.imagem}
                         nota={filme.nota}
                         cinema={filme.cinema}
-                        onClick={() => onFilmeClick(filme)} 
+                        onClick={() => onFilmeClick(filme)}
                     />
                 ))}
             </div >
