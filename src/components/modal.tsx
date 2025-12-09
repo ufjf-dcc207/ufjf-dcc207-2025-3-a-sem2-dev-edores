@@ -17,7 +17,7 @@ type ModalProps = {
     avisoFavoritos?: string;
 }
 
-export default function Modal({ filme, onClose, isFavorito, onToggleFavorito, avisoFavoritos}: ModalProps) {
+export default function Modal({ filme, onClose, isFavorito, onToggleFavorito, avisoFavoritos }: ModalProps) {
     return (
         <div className="modal-sobreposicao">
             <div className="modal-caixa">
@@ -34,7 +34,7 @@ export default function Modal({ filme, onClose, isFavorito, onToggleFavorito, av
                     id='buttonFav'
                     style={{ backgroundColor: isFavorito ? '#7c3a31' : '#2c3e50' }}
                 >
-                    {isFavorito ? "💔 Remover dos Favoritos" : "❤️ Adicionar aos Favoritos"}
+                    {isFavorito ? "Remover dos Favoritos" : "Adicionar aos Favoritos"}
                 </button>
             </div>
         </div>
