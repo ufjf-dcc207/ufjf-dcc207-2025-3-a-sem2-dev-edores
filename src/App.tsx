@@ -5,6 +5,7 @@ import Navbar from './components/navbar'
 import Logo from './assets/logo.jpg'
 import Footer from './components/Footer'
 import Matriz from './components/matriz'
+import Modal from './components/modal'
 
 
 type FilmeTupleType = [string, string, number, boolean];
@@ -92,13 +93,7 @@ function App() {
       ))}
       <Footer />
       {modalAberto && filmeSelecionado && (
-        <div className='modal-sobrepor' onClick={fecharModal}>
-          <div className='modal-caixa' onClick={(event) => event.stopPropagation()}>
-            <button className='modal-fechar' type='button' onClick={fecharModal}>Fechar</button>
-            <img className='modal-imagem' src={filmeSelecionado.imagem} alt={filmeSelecionado.nome} />
-            <strong className='modal-titulo'>{filmeSelecionado.nome}</strong>
-          </div>
-        </div>
+        <Modal filme={filmeSelecionado} onClose={fecharModal} />
       )}
     </>
   )

@@ -1,5 +1,5 @@
-import "./modal.css";
-import Estrelas from "./estrelas";
+import './modal.css';
+import Estrelas from './estrelas';
 
 type Filme = {
     nome: string;
@@ -16,17 +16,13 @@ interface ModalProps {
 export default function Modal({ filme, onClose }: ModalProps) {
     return (
         <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <button className="botao-fechar" onClick={onClose}>✖</button>
-                
-                <img src={filme.imagem} alt={filme.nome} className="modal-imagem" />
-                <h2>{filme.nome}</h2>
-                <Estrelas quantidade={filme.nota} />
-                
-                <p style={{marginTop: '10px', color: '#ccc'}}>
-                    {filme.cinema ? "Disponível nos cinemas 🎟️" : "Disponível em streaming 📺"}
-                </p>
-                <p style={{marginTop: '10px'}}>Sinopse.</p>
+            <div className="modal-content" onClick={(event) => event.stopPropagation()}>
+                <button className="modal-close" type="button" onClick={onClose}>Fechar</button>
+                <img className="modal-image" src={filme.imagem} alt={filme.nome} />
+                <h2 className="modal-title">{filme.nome}</h2>
+                <div className="modal-rating">
+                    <Estrelas quantidade={filme.nota} />
+                </div>
             </div>
         </div>
     );
