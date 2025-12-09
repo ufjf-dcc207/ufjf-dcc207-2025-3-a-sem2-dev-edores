@@ -7,7 +7,6 @@ import Footer from './components/Footer'
 import Matriz from './components/matriz'
 import Modal from './components/modal'
 
-
 type FilmeTupleType = [string, string, number, boolean];
 type MatrizesTupleType = [string, FilmeTupleType[], string?];
 
@@ -26,7 +25,8 @@ const listaDeFilmes2: FilmeTupleType[] = [
   ["Laranja Mecanica", "https://image.tmdb.org/t/p/original/4sHeTAp65WrSSuc05nRBKddhBxO.jpg", 4, true],
   ["La Chinoise", "https://image.tmdb.org/t/p/original/1ihKkAL83EJBAX8ELCpbBOBpilG.jpg", 4, true],
   ["Fallen Angels", "https://image.tmdb.org/t/p/original/hNl9wZiVrvuN4RDIXPG5cGUEtBy.jpg", 2, true],
-  ["A Viagem de Chiriro", "https://image.tmdb.org/t/p/original/qH2f0e19oklRgiq8vpnRuaXkuT.jpg", 5, true],];
+  ["A Viagem de Chiriro", "https://image.tmdb.org/t/p/original/qH2f0e19oklRgiq8vpnRuaXkuT.jpg", 5, true],
+];
 
 const listaDeFilmes3: FilmeTupleType[] = [
   ["Suspiria", "https://image.tmdb.org/t/p/original/5ya8jTbNZTrCFUx9OwpNBjCivXY.jpg", 4, false],
@@ -35,14 +35,15 @@ const listaDeFilmes3: FilmeTupleType[] = [
   ["Star Wars", "https://image.tmdb.org/t/p/original/lesQwNHiSdauuo1xrtLP8uBUlIu.jpg", 4, false],
   ["Black Swan", "https://image.tmdb.org/t/p/original/viWheBd44bouiLCHgNMvahLThqx.jpg", 4, true],
   ["O agente Secreto", "https://image.tmdb.org/t/p/original/oPh7oIPWmedG8AikWuLBC4k3OQu.jpg", 4, false],
-
 ];
 
-const Matrizes: MatrizesTupleType[] = [
+const MatrizesFixas: MatrizesTupleType[] = [
   ["Melhores da semana", listaDeFilmes1, "Os filmes mais assistidos da semana"],
   ["Lançamentos", listaDeFilmes2, "Os filmes recém-chegados ao catálogo"],
   ["Em alta", listaDeFilmes3],
 ];
+
+const TodosOsFilmes = [...listaDeFilmes1, ...listaDeFilmes2, ...listaDeFilmes3];
 
 type Filme = {
   nome: string;
@@ -61,6 +62,15 @@ const tupleParaFilme = ([nome, imagem, nota, cinema]: FilmeTupleType): Filme => 
 function App() {
   const [modalAberto, setModalAberto] = useState(false);
   const [filmeSelecionado, setFilmeSelecionado] = useState<Filme | null>(null);
+  const [favoritos, setFavoritos] = useState<string[]>([]);
+
+  const alternarFavorito = (nomeFilme: string) => {
+    if (favoritos.includes(nomeFilme)) {
+      setFavoritos(favoritos.filter(nome => nome !== nomeFilme));
+    } else {
+      setFavoritos([...favoritos, nomeFilme]);
+    }
+  };
 
   const abrirModal = (filme: Filme) => {
     setFilmeSelecionado(filme);
@@ -77,23 +87,52 @@ function App() {
     setFilmeSelecionado(null);
   };
 
+  const matrizesPadraoTratadas = MatrizesFixas.map(([titulo, filmesTuple, subtitulo]) => ({
+    titulo,
+    subtitulo,
+    filmes: filmesTuple.map(tupleParaFilme)
+  }));
+
+  const minhaListaTratada = favoritos.length > 0 ? [{
+    titulo: "Minha Lista",
+    subtitulo: "Filmes que você favoritou",
+    filmes: TodosOsFilmes.filter(([nome]) => favoritos.includes(nome)).map(tupleParaFilme)
+  }] : [];
+
+  const todasAsMatrizes = [
+    ...minhaListaTratada,
+    ...matrizesPadraoTratadas
+  ];
+
+  const titulosNav = todasAsMatrizes.map(m => m.titulo);
+
   return (
     <>
-      <Navbar link_logo={Logo} link_nav={Matrizes.map(([titulo]) => titulo)} />
+      <Navbar link_logo={Logo} link_nav={titulosNav} />
+      
       <div className='poster-interativo' onClick={abrirModalComHero}>
         <Poster texto={"Acompanhe os filmes que você assistiu,\n salve aqueles que você quer ver \n e diga aos seus amigos o que é bom."} imagem="/public/blur_edges_3.png" />
       </div>
-      {Matrizes.map(([titulo, filmes, subtitulo]) => (
-        <Matriz key={titulo} titulo={titulo} subtitulo={subtitulo} filmes={filmes.map(([nome, imagem, nota, cinema]) => ({
-          nome,
-          imagem,
-          nota,
-          cinema
-        }))} onFilmeClick={abrirModal} />
+
+      {todasAsMatrizes.map((matriz) => (
+        <Matriz 
+          key={matriz.titulo} 
+          titulo={matriz.titulo} 
+          subtitulo={matriz.subtitulo} 
+          filmes={matriz.filmes} 
+          onFilmeClick={abrirModal} 
+        />
       ))}
+      
       <Footer />
+
       {modalAberto && filmeSelecionado && (
-        <Modal filme={filmeSelecionado} onClose={fecharModal} />
+        <Modal 
+          filme={filmeSelecionado} 
+          onClose={fecharModal}
+          isFavorito={favoritos.includes(filmeSelecionado.nome)}
+          onToggleFavorito={() => alternarFavorito(filmeSelecionado.nome)}
+        />
       )}
     </>
   )
