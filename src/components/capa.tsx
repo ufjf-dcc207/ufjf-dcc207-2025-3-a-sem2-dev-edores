@@ -1,4 +1,3 @@
-import type { KeyboardEvent } from 'react';
 import './capa.css';
 import Estrelas from './estrelas';
 
@@ -7,16 +6,11 @@ interface CapaProps {
     imagem: string;
     nota: number;
     cinema: boolean;
-    onClick?: () => void; 
+    onClick?: () => void;
 }
 
 function Capa({ nome, imagem, nota, cinema, onClick }: CapaProps) {
-    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            if (onClick) onClick();
-        }
-    };
+
 
     return (
         <div
@@ -24,7 +18,6 @@ function Capa({ nome, imagem, nota, cinema, onClick }: CapaProps) {
             role='button'
             tabIndex={0}
             onClick={onClick}
-            onKeyDown={handleKeyDown}
         >
             {cinema && (
                 <div className='cinema-mae'>
