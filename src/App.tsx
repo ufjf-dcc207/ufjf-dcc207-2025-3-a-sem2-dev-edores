@@ -86,23 +86,21 @@ function App() {
   const [modalAberto, setModalAberto] = useState(false);
   const [filmeSelecionado, setFilmeSelecionado] = useState<Filme | null>(null);
   const [favoritos, setFavoritos] = useState<string[]>([]);
-  const [avisoFavoritos, setAvisoFavoritos] = useState('');
+  const [avisoFavoritos, setAvisoFavoritos] = useState<string | null>(null);
 
   const alternarFavorito = (nomeFilme: string) => {
     setFavoritos((favoritosAtuais) => {
       if (favoritosAtuais.includes(nomeFilme)) {
         const atualizados = favoritosAtuais.filter(nome => nome !== nomeFilme);
-        setAvisoFavoritos('');
         return atualizados;
       }
 
       if (favoritosAtuais.length >= 5) {
-        setAvisoFavoritos('Você só pode favoritar até 5 filmes.');
+        setAvisoFavoritos('Você atingiu o limite de 5 filmes favoritados');
         return favoritosAtuais;
       }
 
       const atualizados = [...favoritosAtuais, nomeFilme];
-      setAvisoFavoritos('');
       return atualizados;
     });
   };
@@ -115,6 +113,7 @@ function App() {
 
   const fecharModal = () => {
     setModalAberto(false);
+    setAvisoFavoritos(null);
     setFilmeSelecionado(null);
   };
 
@@ -142,11 +141,6 @@ function App() {
       <Navbar link_logo={Logo} link_nav={titulosNav} />
       <Poster texto={"Acompanhe os filmes que você assistiu,\n salve aqueles que você quer ver \n e diga aos seus amigos o que é bom."} imagem="/public/blur_edges_3.png" />
 
-      {avisoFavoritos && (
-        <div className="aviso-favoritos">
-          {avisoFavoritos}
-        </div>
-      )}
 
       {todasAsMatrizes.map((matriz) => (
         <Matriz
@@ -166,6 +160,7 @@ function App() {
           onClose={fecharModal}
           isFavorito={favoritos.includes(filmeSelecionado.nome)}
           onToggleFavorito={() => alternarFavorito(filmeSelecionado.nome)}
+          avisoFavoritos={avisoFavoritos ? avisoFavoritos : undefined}
         />
       )}
     </>
