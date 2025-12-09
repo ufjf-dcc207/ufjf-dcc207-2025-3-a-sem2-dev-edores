@@ -46,10 +46,7 @@ const MatrizesFixas: MatrizesTupleType[] = [
 const TodosOsFilmes = [...listaDeFilmes1, ...listaDeFilmes2, ...listaDeFilmes3];
 
 const sinopsesPorTitulo: { [titulo: string]: string } = {
-  "Vivre Sa Vie": "Nana busca independencia em Paris e sente o peso de cada escolha.",
   "O poderoso Chefão": "Michael assume os negócios da familia Corleone e paga o preço do poder.",
-  "Pulp Fiction": "Criminosos de Los Angeles se cruzam em encontros violentos e ironicos.",
-  "A Bruxa": "Familia puritana enfrenta medo e supersticao na Nova Inglaterra isolada.",
   "Before Sunrise": "Dois jovens vagam por Viena e compartilham sonhos ate o amanhecer.",
   "O Iluminado": "Jack guarda um hotel vazio e sucumbe a visoes que o levam a loucura.",
   "Psicose": "Marion encontra um dono de motel enigmático e segredos mortais.",
@@ -95,7 +92,7 @@ function App() {
         return atualizados;
       }
 
-      if (favoritosAtuais.length >= 5) {
+      if (favoritosAtuais.length >= 3) {
         setAvisoFavoritos('Você atingiu o limite de 5 filmes favoritados');
         return favoritosAtuais;
       }
