@@ -19,7 +19,7 @@ interface MatrizProps {
 function Matriz({ filmes, titulo, subtitulo, onFilmeClick }: MatrizProps) {
     let tituloComEstado = titulo;
 
-    if (titulo === "Minha Lista" && filmes.length >= 3) {
+    if (titulo === "Favoritos" && filmes.length >= 3) {
         tituloComEstado = `${titulo} - CHEIO`;
     }
 
