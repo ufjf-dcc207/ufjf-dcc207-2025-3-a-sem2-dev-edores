@@ -16,7 +16,6 @@ function Capa({ nome, imagem, nota, cinema, onClick }: CapaProps) {
         <div
             className='capa'
             role='button'
-            tabIndex={0}
             onClick={onClick}
         >
             {cinema && (
