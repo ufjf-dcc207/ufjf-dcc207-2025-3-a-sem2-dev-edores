@@ -77,10 +77,6 @@ function App() {
     setModalAberto(true);
   };
 
-  const abrirModalComHero = () => {
-    const filmeHero = tupleParaFilme(listaDeFilmes1[0]);
-    abrirModal(filmeHero);
-  };
 
   const fecharModal = () => {
     setModalAberto(false);
@@ -110,7 +106,7 @@ function App() {
     <>
       <Navbar link_logo={Logo} link_nav={titulosNav} />
       
-      <div className='poster-interativo' onClick={abrirModalComHero}>
+      <div className='poster-interativo'>
         <Poster texto={"Acompanhe os filmes que você assistiu,\n salve aqueles que você quer ver \n e diga aos seus amigos o que é bom."} imagem="/public/blur_edges_3.png" />
       </div>
 
