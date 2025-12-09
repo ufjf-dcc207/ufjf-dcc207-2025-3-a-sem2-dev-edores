@@ -86,13 +86,25 @@ function App() {
   const [modalAberto, setModalAberto] = useState(false);
   const [filmeSelecionado, setFilmeSelecionado] = useState<Filme | null>(null);
   const [favoritos, setFavoritos] = useState<string[]>([]);
+  const [avisoFavoritos, setAvisoFavoritos] = useState('');
 
   const alternarFavorito = (nomeFilme: string) => {
-    if (favoritos.includes(nomeFilme)) {
-      setFavoritos(favoritos.filter(nome => nome !== nomeFilme));
-    } else {
-      setFavoritos([...favoritos, nomeFilme]);
-    }
+    setFavoritos((favoritosAtuais) => {
+      if (favoritosAtuais.includes(nomeFilme)) {
+        const atualizados = favoritosAtuais.filter(nome => nome !== nomeFilme);
+        setAvisoFavoritos('');
+        return atualizados;
+      }
+
+      if (favoritosAtuais.length >= 5) {
+        setAvisoFavoritos('Você só pode favoritar até 5 filmes.');
+        return favoritosAtuais;
+      }
+
+      const atualizados = [...favoritosAtuais, nomeFilme];
+      setAvisoFavoritos('');
+      return atualizados;
+    });
   };
 
   const abrirModal = (filme: Filme) => {
@@ -130,21 +142,27 @@ function App() {
       <Navbar link_logo={Logo} link_nav={titulosNav} />
       <Poster texto={"Acompanhe os filmes que você assistiu,\n salve aqueles que você quer ver \n e diga aos seus amigos o que é bom."} imagem="/public/blur_edges_3.png" />
 
+      {avisoFavoritos && (
+        <div className="aviso-favoritos">
+          {avisoFavoritos}
+        </div>
+      )}
+
       {todasAsMatrizes.map((matriz) => (
-        <Matriz 
-          key={matriz.titulo} 
-          titulo={matriz.titulo} 
-          subtitulo={matriz.subtitulo} 
-          filmes={matriz.filmes} 
-          onFilmeClick={abrirModal} 
+        <Matriz
+          key={matriz.titulo}
+          titulo={matriz.titulo}
+          subtitulo={matriz.subtitulo}
+          filmes={matriz.filmes}
+          onFilmeClick={abrirModal}
         />
       ))}
-      
+
       <Footer />
 
       {modalAberto && filmeSelecionado && (
-        <Modal 
-          filme={filmeSelecionado} 
+        <Modal
+          filme={filmeSelecionado}
           onClose={fecharModal}
           isFavorito={favoritos.includes(filmeSelecionado.nome)}
           onToggleFavorito={() => alternarFavorito(filmeSelecionado.nome)}
