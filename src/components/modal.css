@@ -10,35 +10,51 @@
 }
 
 .modal-caixa {
-	background: #202032;
-	color: #ffffff;
-	padding: 20px;
-	border-radius: 10px;
-	max-width: 360px;
-	width: 100%;
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
+	align-items: center;
+	gap: 16px;
+	width: 100%;
+	max-width: 360px;
+	padding: 24px 20px 28px;
+	border-radius: 12px;
+	background: #202032;
+	color: #ffffff;
 	text-align: center;
+	box-shadow: 0 18px 40px rgba(5, 6, 20, 0.55);
+	font-family: 'Segoe UI', sans-serif;
 }
 
 .modal-fechar {
-	align-self: flex-end;
-	background: transparent;
-	border: 1px solid rgba(255, 255, 255, 0.6);
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: none;
+	background: rgba(255, 255, 255, 0.12);
 	color: #ffffff;
-	padding: 4px 10px;
-	border-radius: 6px;
 	cursor: pointer;
+	font-size: 1.1rem;
+	line-height: 1;
+	transition: background-color 0.2s ease;
+}
+
+.modal-fechar:hover {
+	background: rgba(255, 255, 255, 0.24);
 }
 
 .modal-imagem {
 	width: 100%;
-	border-radius: 8px;
+	border-radius: 10px;
+	box-shadow: 0 14px 24px rgba(0, 0, 0, 0.35);
 }
 
 .modal-titulo {
-	font-size: 1.1rem;
+	font-size: 1.2rem;
+	font-weight: 600;
 }
 
 .modal-avaliacao {
@@ -49,20 +65,37 @@
 
 .modal-sinopse {
 	font-size: 0.95rem;
-	line-height: 1.4;
+	line-height: 1.5;
 	color: rgba(255, 255, 255, 0.85);
 }
 
-#buttonFav{
-	margin-top: 1.5rem;
+#buttonFav {
+	margin-top: 8px;
+	width: 100%;
 	padding: 10px 20px;
-	width: 100%; 
-	color: white;
 	border: none;
-	border-radius: 4px;
+	border-radius: 999px;
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 0.95rem;
 	cursor: pointer;
-	font-weight: bold;
-	font-size: 1rem;
-	transition: background-color 0.3s;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+#buttonFav:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 16px 26px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 420px) {
+	.modal-caixa {
+		max-width: 90vw;
+		padding: 20px 16px 24px;
+	}
+
+	.modal-titulo {
+		font-size: 1.1rem;
+	}
 }
 
