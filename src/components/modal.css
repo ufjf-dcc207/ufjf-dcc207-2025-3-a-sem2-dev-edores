@@ -17,6 +17,7 @@
 	gap: 16px;
 	width: 100%;
 	max-width: 360px;
+	max-height: 100%;
 	padding: 24px 20px 28px;
 	border-radius: 12px;
 	background: #202032;
@@ -47,7 +48,7 @@
 }
 
 .modal-imagem {
-	width: 100%;
+	width: 60%;
 	border-radius: 10px;
 	box-shadow: 0 14px 24px rgba(0, 0, 0, 0.35);
 }
@@ -86,6 +87,21 @@
 #buttonFav:hover {
 	transform: translateY(-1px);
 	box-shadow: 0 16px 26px rgba(0, 0, 0, 0.35);
+}
+
+.aviso-favoritos {
+    text-align: center;
+    margin: 12px auto 0;
+    max-width: 960px;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-weight: bold;
+    border: 1px solid #dc3545;
+    background: rgba(220, 53, 69, 0.2);
+    color: #f8d7da;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 420px) {

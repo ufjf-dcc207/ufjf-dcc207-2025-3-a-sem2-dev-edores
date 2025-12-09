@@ -14,9 +14,10 @@ type ModalProps = {
     onClose: () => void;
     isFavorito: boolean;
     onToggleFavorito: () => void;
+    avisoFavoritos?: string;
 }
 
-export default function Modal({ filme, onClose, isFavorito, onToggleFavorito }: ModalProps) {
+export default function Modal({ filme, onClose, isFavorito, onToggleFavorito, avisoFavoritos}: ModalProps) {
     return (
         <div className="modal-sobreposicao">
             <div className="modal-caixa">
@@ -27,6 +28,7 @@ export default function Modal({ filme, onClose, isFavorito, onToggleFavorito }: 
                     <Estrelas quantidade={filme.nota} />
                 </div>
                 <p className="modal-sinopse">{filme.sinopse}</p>
+                {avisoFavoritos && <p className="aviso-favoritos">{avisoFavoritos}</p>}
                 <button
                     onClick={onToggleFavorito}
                     id='buttonFav'

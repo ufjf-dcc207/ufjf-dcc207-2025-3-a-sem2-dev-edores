@@ -20,7 +20,7 @@ function Matriz({ filmes, titulo, subtitulo, onFilmeClick }: MatrizProps) {
     let tituloComEstado = titulo;
 
     if (titulo === "Minha Lista" && filmes.length >= 5) {
-        tituloComEstado = `${titulo} - cheio`;
+        tituloComEstado = `${titulo} - CHEIO`;
     }
 
     return (
