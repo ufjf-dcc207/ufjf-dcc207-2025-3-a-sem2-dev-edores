@@ -100,6 +100,7 @@ function App() {
     setModalAberto(true);
   };
 
+
   const fecharModal = () => {
     setModalAberto(false);
     setFilmeSelecionado(null);
