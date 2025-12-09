@@ -93,7 +93,7 @@ function App() {
       }
 
       if (favoritosAtuais.length >= 3) {
-        setAvisoFavoritos('Você atingiu o limite de 5 filmes favoritados');
+        setAvisoFavoritos('Você atingiu o limite de 3 filmes favoritados');
         return favoritosAtuais;
       }
 
