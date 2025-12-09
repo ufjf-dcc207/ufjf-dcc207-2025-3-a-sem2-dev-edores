@@ -45,7 +45,7 @@ const MatrizesFixas: MatrizesTupleType[] = [
 
 const TodosOsFilmes = [...listaDeFilmes1, ...listaDeFilmes2, ...listaDeFilmes3];
 
-const sinopsesPorTitulo: Record<string, string> = {
+const sinopsesPorTitulo: { [titulo: string]: string } = {
   "Vivre Sa Vie": "Nana busca independencia em Paris e sente o peso de cada escolha.",
   "O poderoso Chefão": "Michael assume os negócios da familia Corleone e paga o preço do poder.",
   "Pulp Fiction": "Criminosos de Los Angeles se cruzam em encontros violentos e ironicos.",
@@ -100,11 +100,6 @@ function App() {
     setModalAberto(true);
   };
 
-  const abrirModalComHero = () => {
-    const filmeHero = tupleParaFilme(listaDeFilmes1[0]);
-    abrirModal(filmeHero);
-  };
-
   const fecharModal = () => {
     setModalAberto(false);
     setFilmeSelecionado(null);
@@ -132,10 +127,7 @@ function App() {
   return (
     <>
       <Navbar link_logo={Logo} link_nav={titulosNav} />
-      
-      <div className='poster-interativo' onClick={abrirModalComHero}>
-        <Poster texto={"Acompanhe os filmes que você assistiu,\n salve aqueles que você quer ver \n e diga aos seus amigos o que é bom."} imagem="/public/blur_edges_3.png" />
-      </div>
+      <Poster texto={"Acompanhe os filmes que você assistiu,\n salve aqueles que você quer ver \n e diga aos seus amigos o que é bom."} imagem="/public/blur_edges_3.png" />
 
       {todasAsMatrizes.map((matriz) => (
         <Matriz 
