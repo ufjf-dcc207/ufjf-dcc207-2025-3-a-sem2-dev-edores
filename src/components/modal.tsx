@@ -5,7 +5,6 @@ type Filme = {
     nome: string;
     imagem: string;
     nota: number;
-    cinema: boolean;
     sinopse: string;
 };
 
