@@ -124,8 +124,8 @@ function App() {
   }));
 
   const minhaListaTratada = favoritos.length > 0 ? [{
-    titulo: "Minha Lista",
-    subtitulo: "Filmes que você favoritou",
+    titulo: "Favoritos",
+    subtitulo: "Filmes que você curtiu",
     filmes: TodosOsFilmes.filter(([nome]) => favoritos.includes(nome)).map(tupleParaFilme)
   }] : [];
 
